@@ -1,0 +1,47 @@
+--- git status ---
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py
+	modified:   unitree_rl_lab.sh
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py b/source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py
+index e78413a..2484613 100644
+--- a/source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py
++++ b/source/unitree_rl_lab/unitree_rl_lab/assets/robots/unitree.py
+@@ -17,8 +17,8 @@ from isaaclab.utils import configclass
+ 
+ from unitree_rl_lab.assets.robots import unitree_actuators
+ 
+-UNITREE_MODEL_DIR = "path/to/unitree_model"  # Replace with the actual path to your unitree_model directory
+-UNITREE_ROS_DIR = "path/to/unitree_ros"  # Replace with the actual path to your unitree_ros package
++UNITREE_MODEL_DIR = "/workspace/mh42_scratch2/unitree_model"  # Replace with the actual path to your unitree_model directory
++UNITREE_ROS_DIR = "/workspace/mh42/FYP2026S1_3487/stack_taine/unitree_ros/unitree_ros"  # Replace with the actual path to your unitree_ros package
+ 
+ 
+ @configclass
+diff --git a/unitree_rl_lab.sh b/unitree_rl_lab.sh
+index 8563ea3..8d3127f 100755
+--- a/unitree_rl_lab.sh
++++ b/unitree_rl_lab.sh
+@@ -1,4 +1,5 @@
+ #!/usr/bin/env bash
++PYTHON_EXE="/workspace/mh42/FYP2026S1_3487/stack_taine/IsaacLab/_isaac_sim/python.sh"
+ 
+ export UNITREE_RL_LAB_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+ 
+@@ -6,6 +7,7 @@ if ! [[ -z "${CONDA_PREFIX}" ]]; then
+     python_exe=${CONDA_PREFIX}/bin/python
+ else
+     echo "[Error] No conda environment activated. Please activate the conda environment first."
++    python_exe="${PYTHON_EXE}"
+     # exit 1
+ fi
+ 
